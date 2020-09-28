@@ -6,6 +6,7 @@ import {
 } from "react-router-dom"
 import Main from './components/Main'
 import Tickets from './components/Tickets'
+import Ticket from './components/Ticket'
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
           <Tickets />
         </Route>
         <Route path="/tickets">
-          <Tickets />
+          <Ticket />
         </Route>
+        
         
         <Route path="/">
           <Main />
