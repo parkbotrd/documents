@@ -42,12 +42,13 @@ class Tickets extends React.Component {
 
     sc = (e) => {
         this.setState({
-            email: e.target.value
+            replyContent: e.target.value
         })
     }
 
     apiRequest = async () => {
-        await fetch(`http://localhost:3001/post/${this.state.ticketId}/?content=${this.state.e}`)
+        if(!this.state.replyContent) return
+        await fetch(`http://localhost:3001/post/${this.state.ticketId}/?content=${this.state.replyContent}`)
         // eslint-disable-next-line
         window.location.href = window.location.href
     }
