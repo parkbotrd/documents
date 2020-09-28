@@ -8,13 +8,14 @@ import {
     // eslint-disable-next-line
     withRouter
 } from "react-router-dom"
+import LoadingOverlay from 'react-loading-overlay';
 
 
 class Tickets extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            Rendered: null,
+            Rendered: true,
             ticketId: this.props.match.params.ticketId
         }
     }
@@ -31,7 +32,8 @@ class Tickets extends React.Component {
             this.setState({
                 title: res.title,
                 author: res.author,
-                chatting: res.chatting
+                chatting: JSON.parse(res.contents),
+                Rendered: false
             })
         } catch (err) {
             console.log(err);
@@ -44,18 +46,26 @@ class Tickets extends React.Component {
         })
     }
 
-    apiRequest = () => {
-        console.log(this.state.email)
+    apiRequest = async () => {
+        await fetch(`http://localhost:3001/post/${this.state.ticketId}/?content=${this.state.e}`)
+        // eslint-disable-next-line
+        window.location.href = window.location.href
     }
   
     render() {
         return (
             <div className="Main">
+                <LoadingOverlay
+                    active={this.state.Rendered}
+                    spinner
+                    text='Loading...'
+                />
+
                 <p className="White mt">티켓 아이디: <code>{this.state.ticketId}</code></p>
                 <h1 className="White">{this.state.title}</h1>
                 <h2 className="White">{this.state.author}</h2>
                 <p>{this.state && this.state.chatting && this.state.chatting.map(t => (
-                    <Card style={{margin: '10px', width: '80%', left: '7%'}} className="text-white bg-dark mb-3">
+                    <Card style={{margin: '10px', width: '80%', left: '8vw'}} className="text-white bg-dark mb-3">
                     <Card.Header>{t.author}</Card.Header>
                     <Card.Body>
                       <Card.Text>
@@ -65,7 +75,7 @@ class Tickets extends React.Component {
                   </Card>
                 ))}</p>
 
-                <Card style={{ width: '80%', left: '7.3%' }} className="text-white bg-dark mb-3">
+                <Card style={{ width: '80%', left: '8.4vw' }} className="text-white bg-dark mb-3">
                     <Card.Body>
                         <Form>
                             <Form.Label>답장하기</Form.Label>
