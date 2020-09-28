@@ -74,7 +74,7 @@ class Tickets extends React.Component {
                                 답장 내용은 암호화 되어 전송됩니다.
                             </Form.Text>
                         </Form>
-                        <Button id="button_buy_usd" variant="primary" style={{ marginTop: '10px' }} onClick={this.apiRequest}>보내기</Button>
+                        <Button variant="primary" style={{ marginTop: '10px' }} onClick={this.apiRequest}>보내기</Button>
                     </Card.Body>
                 </Card>
             </div>
