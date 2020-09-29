@@ -13,6 +13,7 @@ class Login extends React.Component {
   
     componentDidMount() {
         this.renderAll()
+        document.querySelector(".loader-container").remove()
     }
   
     renderAll = async() => {

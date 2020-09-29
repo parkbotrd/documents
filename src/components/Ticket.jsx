@@ -29,7 +29,7 @@ class Ticket extends React.Component {
     }
 
     fakeRequest = () => {
-        return new Promise(resolve => setTimeout(() => resolve(), 1500));
+        return new Promise(resolve => setTimeout(() => resolve(), 1377));
     };
   
     renderAll = async() => {

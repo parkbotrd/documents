@@ -32,16 +32,16 @@ class NewTicket extends React.Component {
 
     sc = (e) => {
         this.setState({
-            replyContent: e.target.value
+            Content: e.target.value
         })
     }
 
     apiRequest = async () => {
-        if(!this.state.replyContent) return
+        if(!this.state.Content) return
         if(!localStorage.getItem("name")) return
-        await fetch(`http://localhost:3001/new/?content=${this.state.replyContent.split('&').join('')}&auth=${localStorage.getItem("auth")}`)
+        let res = await fetch(`http://localhost:3001/new/?title=${this.state.Content.split('&').join('')}&auth=${localStorage.getItem("auth")}`).then(a => a.json())
         // eslint-disable-next-line
-        window.location.href = window.location.href
+        window.location.href = `/tickets/${res.id}`
     }
   
     render() {
@@ -58,11 +58,9 @@ class NewTicket extends React.Component {
                         <Form>
                             <Form.Label>티켓 열기</Form.Label>
                             <Form.Control 
-                                as="textarea" 
-                                rows="5" 
                                 id="content"
                                 onChange={this.sc} 
-                                placeholder="문의 내용 입력(줄바꿈은 허용되지 않습니다.)"
+                                placeholder="티켓 제목 입력"
                             />
                         </Form>
                         <Button variant="primary" style={{ marginTop: '10px' }} onClick={this.apiRequest}>티켓 열기</Button>
