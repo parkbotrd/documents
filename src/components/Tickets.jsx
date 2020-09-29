@@ -1,5 +1,5 @@
 import React from 'react';
-import './Tickets.css';
+import './zMain.css';
 import { Card, Form, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
@@ -8,7 +8,6 @@ import {
     // eslint-disable-next-line
     withRouter
 } from "react-router-dom"
-import LoadingOverlay from 'react-loading-overlay';
 
 
 class Tickets extends React.Component {
@@ -16,24 +15,36 @@ class Tickets extends React.Component {
         super(props)
         this.state = {
             Rendered: true,
+            realRendered: true,
             ticketId: this.props.match.params.ticketId
         }
     }
   
     componentDidMount() {
         this.renderAll()
+        this.fakeRequest().then(() => {
+            const el = document.querySelector(".loader-container");
+            if (el) {
+                el.remove();
+                this.setState({
+                  Rendered: false,
+                })
+            }
+        })
     }
+
+    fakeRequest = () => {
+        return new Promise(resolve => setTimeout(() => resolve(), 1177));
+    };
   
     renderAll = async() => {
-        // let guildId = window.location.href.replace(/[^0-9]/g,'').replace(3000, "")
         try {
             let res = await fetch(`http://localhost:3001/get/${this.state.ticketId}`).then(r => r.json())
-            // this will re render the view with new data
             this.setState({
                 title: res.title,
                 author: res.author,
                 chatting: JSON.parse(res.contents),
-                Rendered: false
+                realRendered: false
             })
         } catch (err) {
             console.log(err);
@@ -49,19 +60,18 @@ class Tickets extends React.Component {
     apiRequest = async () => {
         if(!this.state.replyContent) return
         if(!localStorage.getItem("name")) return
-        await fetch(`http://localhost:3001/post/${this.state.ticketId}/?content=${this.state.replyContent}&auth=${localStorage.getItem("auth")}`)
+        await fetch(`http://localhost:3001/post/${this.state.ticketId}/?content=${this.state.replyContent.split('&').join('')}&auth=${localStorage.getItem("auth")}`)
         // eslint-disable-next-line
         window.location.href = window.location.href
     }
   
     render() {
+        if (this.state.Rendered || this.state.realRendered) {      
+            return null 
+        }
+
         return (
-            <div className="Main">
-                <LoadingOverlay
-                    active={this.state.Rendered}
-                    spinner
-                    text='Loading...'
-                />
+            <div className="Main-tc">
 
                 <p className="White mt">티켓 아이디: <code>{this.state.ticketId}</code></p>
                 <h1 className="White">{this.state.title}</h1>

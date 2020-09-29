@@ -1,8 +1,9 @@
 import React from 'react';
-import './Main.css';
+import './zMain.css';
 import { Button } from 'react-bootstrap'
 
 export default function App() {
+    document.querySelector(".loader-container").remove()
     let logout = () => {
         localStorage.setItem("name", '')
         localStorage.setItem("id", '')
@@ -26,7 +27,8 @@ export default function App() {
                     <Button variant="primary" style={{ marginTop: '10px' }} onClick={logout}>로그아웃</Button>
                 </div> : 
                 <div className="App-header">
-                    <h2>티켓을 열고싶으시면 로그인을 먼저 해주세요!</h2>
+                    <h1>고객 지원 센터</h1>
+                    <p className="m30t">티켓을 열고싶으시면 로그인을 먼저 해주세요!</p>
                     <Button variant="primary" style={{ marginTop: '10px' }} onClick={login}>로그인</Button>
                 </div>
             }

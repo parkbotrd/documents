@@ -1,0 +1,63 @@
+.App {
+  text-align: center;
+}
+
+.m30t {
+  margin-top: 30px;
+}
+
+.nt {
+  margin-top: 100px;
+  margin-left: 46.7%
+}
+
+.App-header {
+  background-color: whitesmoke;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+.Main {
+  background-color: whitesmoke;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(9px + 1vmin);
+}
+
+.Main-tc {
+  background-color: rgb(36, 36, 36);
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(9px + 1vmin);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.White {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+}
+
+.Black {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+.card-group [class*='col-'] {
+  float: none;
+}
