@@ -7,6 +7,7 @@ import {
 import Main from './components/Main'
 import Tickets from './components/Tickets'
 import Ticket from './components/Ticket'
+import Login from './components/Login'
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
       <Switch>
         <Route path="/tickets/:ticketId">
           <Tickets />
+        </Route>
+        <Route path="/login/:oauthCode">
+          <Login />
         </Route>
         <Route path="/tickets">
           <Ticket />

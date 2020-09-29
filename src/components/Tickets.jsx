@@ -48,7 +48,8 @@ class Tickets extends React.Component {
 
     apiRequest = async () => {
         if(!this.state.replyContent) return
-        await fetch(`http://localhost:3001/post/${this.state.ticketId}/?content=${this.state.replyContent}`)
+        if(!localStorage.getItem("name")) return
+        await fetch(`http://localhost:3001/post/${this.state.ticketId}/?content=${this.state.replyContent}&auth=${localStorage.getItem("auth")}`)
         // eslint-disable-next-line
         window.location.href = window.location.href
     }
