@@ -27,7 +27,7 @@ class Tickets extends React.Component {
             if (el) {
                 el.remove();
                 this.setState({
-                  Rendered: false,
+                    Rendered: false,
                 })
             }
         })
