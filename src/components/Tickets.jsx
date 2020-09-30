@@ -34,7 +34,7 @@ class Tickets extends React.Component {
     }
 
     fakeRequest = () => {
-        return new Promise(resolve => setTimeout(() => resolve(), 1177));
+        return new Promise(resolve => setTimeout(() => resolve(), 577));
     };
   
     renderAll = async() => {
@@ -59,7 +59,7 @@ class Tickets extends React.Component {
 
     apiRequest = async () => {
         if(!this.state.replyContent) return
-        if(!localStorage.getItem("name")) return
+        if(!localStorage.getItem("name")) return window.location.href = '/'
         await fetch(`http://localhost:3001/post/${this.state.ticketId}/?content=${this.state.replyContent.split('&').join('')}&auth=${localStorage.getItem("auth")}`)
         // eslint-disable-next-line
         window.location.href = window.location.href

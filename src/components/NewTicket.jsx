@@ -27,7 +27,7 @@ class NewTicket extends React.Component {
     }
 
     fakeRequest = () => {
-        return new Promise(resolve => setTimeout(() => resolve(), 500));
+        return new Promise(resolve => setTimeout(() => resolve(), 270));
     };
 
     sc = (e) => {
@@ -38,7 +38,7 @@ class NewTicket extends React.Component {
 
     apiRequest = async () => {
         if(!this.state.Content) return
-        if(!localStorage.getItem("name")) return
+        if(!localStorage.getItem("name")) return window.location.href = '/'
         let res = await fetch(`http://localhost:3001/new/?title=${this.state.Content.split('&').join('')}&auth=${localStorage.getItem("auth")}`).then(a => a.json())
         // eslint-disable-next-line
         window.location.href = `/tickets/${res.id}`
@@ -67,7 +67,6 @@ class NewTicket extends React.Component {
                         <Button variant="primary" style={{ marginLeft: '10px' }} href="/">메인으로</Button>
                     </Card.Body>
                 </Card>
-                
             </div>
         )
     }

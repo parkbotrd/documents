@@ -26,8 +26,6 @@ function App() {
         <Route path="/tickets">
           <Ticket />
         </Route>
-        
-        
         <Route path="/">
           <Main />
         </Route>
