@@ -1,6 +1,12 @@
 # 중요
 이 프로젝트는 파크봇만을 위한 프로젝트가 아닌 할게 없고 심심해서 만든 **개인 프로젝트** 입니다.
 
+## 스크린샷
+
+![1](https://i.ibb.co/dG9dVDh/s1.png)
+![1](https://i.ibb.co/vct0DMV/image.png)
+![1](https://i.ibb.co/RNHGrgj/image.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
