@@ -35,7 +35,7 @@ class Ticket extends React.Component {
     renderAll = async() => {
         // let guildId = window.location.href.replace(/[^0-9]/g,'').replace(3000, "")
         try {
-            let res = await fetch(`http://localhost:3001/mytickets/?auth=${localStorage.getItem("auth")}`).then(r => r.json())
+            let res = await fetch(`https://support.parkbot.ml:3001/mytickets/?auth=${localStorage.getItem("auth")}`).then(r => r.json())
             // this will re render the view with new data
             this.setState({
                 chatting: res,

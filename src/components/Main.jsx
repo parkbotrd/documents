@@ -13,7 +13,7 @@ export default function App() {
     }
 
     let login = () => {
-        window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=530171799980212244&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Flogin&response_type=code&scope=email%20identify'
+        window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=530171799980212244&redirect_uri=https%3A%2F%2Fsupport.parkbot.ml%3A3001%2Flogin&response_type=code&scope=email%20identify'
     }
 
     return(

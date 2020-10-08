@@ -39,7 +39,7 @@ class Tickets extends React.Component {
   
     renderAll = async() => {
         try {
-            let res = await fetch(`http://localhost:3001/get/${this.state.ticketId}`).then(r => r.json())
+            let res = await fetch(`https://support.parkbot.ml:3001/get/${this.state.ticketId}`).then(r => r.json())
             this.setState({
                 title: res.title,
                 author: res.author,
@@ -60,7 +60,7 @@ class Tickets extends React.Component {
     apiRequest = async () => {
         if(!this.state.replyContent) return
         if(!localStorage.getItem("name")) return window.location.href = '/'
-        await fetch(`http://localhost:3001/post/${this.state.ticketId}/?content=${this.state.replyContent.split('&').join('')}&auth=${localStorage.getItem("auth")}`)
+        await fetch(`https://support.parkbot.ml:3001/post/${this.state.ticketId}/?content=${this.state.replyContent.split('&').join('')}&auth=${localStorage.getItem("auth")}`)
         // eslint-disable-next-line
         window.location.href = window.location.href
     }
@@ -92,9 +92,6 @@ class Tickets extends React.Component {
                         <Form>
                             <Form.Label>답장하기</Form.Label>
                             <Form.Control as="textarea" rows="5" id="content" onChange={this.sc} placeholder="답장할 내용 입력(줄바꿈은 허용되지 않습니다.)"/>
-                            <Form.Text className="text-muted" style={{ fontSize: '9px' }}>
-                                답장 내용은 암호화 되어 전송됩니다.
-                            </Form.Text>
                         </Form>
                         <Button variant="primary" style={{ marginTop: '10px' }} onClick={this.apiRequest}>보내기</Button>
                         <Button variant="primary" style={{ marginLeft: '10px' }} href="/">메인으로</Button>

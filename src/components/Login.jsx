@@ -19,7 +19,7 @@ class Login extends React.Component {
     renderAll = async() => {
         // let guildId = window.location.href.replace(/[^0-9]/g,'').replace(3000, "")
         try {
-            let res = await fetch(`http://localhost:3001/oauth2/?code=${this.state.oauthCode}`).then(r => r.json())
+            let res = await fetch(`https://support.parkbot.ml:3001/oauth2/?code=${this.state.oauthCode}`).then(r => r.json())
             // this will re render the view with new data
             console.log(this.state.oauthCode)
             await localStorage.setItem("name", `${res.username}#${res.discriminator}`)

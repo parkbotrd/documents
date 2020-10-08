@@ -39,7 +39,7 @@ class NewTicket extends React.Component {
     apiRequest = async () => {
         if(!this.state.Content) return
         if(!localStorage.getItem("name")) return window.location.href = '/'
-        let res = await fetch(`http://localhost:3001/new/?title=${this.state.Content.split('&').join('')}&auth=${localStorage.getItem("auth")}`).then(a => a.json())
+        let res = await fetch(`https://support.parkbot.ml:3001/new/?title=${this.state.Content.split('&').join('')}&auth=${localStorage.getItem("auth")}`).then(a => a.json())
         // eslint-disable-next-line
         window.location.href = `/tickets/${res.id}`
     }
